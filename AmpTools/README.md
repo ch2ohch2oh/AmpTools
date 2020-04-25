@@ -1,31 +1,27 @@
-//******************************************************************************
-//
-// See individual source files for license information.
-// 
-// This software written by Matthew Shepherd, Ryan Mitchell, and 
-//                  Hrayr Matevosyan at Indiana University, Bloomington and
-//                  Lawrence Gibbons at Cornell University
-//
-//******************************************************************************
+> See individual source files for license information.
+> 
+> This software written by Matthew Shepherd, Ryan Mitchell, and 
+>                  Hrayr Matevosyan at Indiana University, Bloomington and
+>                  Lawrence Gibbons at Cornell University
 
-INSTALLATION AND USE:
+# Installation and Use
 
 This depends on ROOT.  Be sure that your ROOT environment is configured
 properly.  The executable root-config should be in your path as this
 will be used by the make system.
 
-Typing 'make' will build the package and produce a single static library, 
+Typing `make` will build the package and produce a single static library, 
 libAmpTools.a, that can be linked by external packages.  To access the include 
 files, it is recommended one add the path to this top level directory in the
--I flag to gcc.  Once this is done, files can be included in code by typing, 
-for example, '#include "IUAmpTools/AmplitudeManager.h"'.
+`-I` flag to gcc.  Once this is done, files can be included in code by typing, 
+for example, `#include "IUAmpTools/AmplitudeManager.h"`.
 
 Support for computing amplitudes on graphics cards can be enabled by
-typing 'make GPU=1'.  In this case CUDA_INSTALL_PATH should point to your
-installation of CUDA and you may need to adjust the CUDA_FLAGS variable in 
+typing `make GPU=1`.  In this case `CUDA_INSTALL_PATH` should point to your
+installation of CUDA and you may need to adjust the `CUDA_FLAGS` variable in 
 the Makefile for your particular hardware.
 
-KNOWN ISSUES/FUTURE DEVELOPMENT:
+# Know Issues and Future Development
 
 (0) Building can sometimes be cantankerous.  We are in need of a configure
 system.  Common mistakes are inadvertently mixing 32-bit and 64-bit code
@@ -35,9 +31,9 @@ The GPU hardware versions also need to be hard coded in Makefiles.
 (1) Error propagation in some cases is unreliable.  Fit parameters and
 covariance matrices are correct, but computation of fit fractions that 
 are printed in some examples do not properly account for numerator/denominator
-correlations.  IF RELIABLE ERRORS ARE NEEDED, IT IS ADVISED TO DO YOUR OWN 
+correlations.  **IF RELIABLE ERRORS ARE NEEDED, IT IS ADVISED TO DO YOUR OWN 
 ERROR PROPAGATION USING THE FIT PARAMETERS AND COVARIANCE MATRIX, 
-rather than rely on the examples.
+rather than rely on the examples.**
 
 (2) While it is possible to fit for a parameter that is embedded inside of
 the calculation of the amplitude, there is no easy to to compute the
@@ -66,9 +62,9 @@ Do not use for fits with free parameters in amplitudes until a fix is made.
 to fit data to a sum of moments.  Currently the only supported scheme
 is fitting to multiple coherent sums of amplitudes.
 
-RELEASE NOTES:
+# Release Notes
 
-v0.10.0 (10-Jun-2019):
+## v0.10.0 (10-Jun-2019)
 
 This update includes the ability for users calculate and cache variables
 from which the amplitude can later be calculated.  In the case that amplitudes
@@ -79,17 +75,17 @@ data then the four-vectors can be purged from memory.  See examples in
 the BreitWigner amplitude in the Dalitz tutorial for how to implement
 these functions.
 
-v0.9.4 (13-Jun-2018):
+## v0.9.4 (13-Jun-2018)
 
 This release includes modifications to make the Histogram classes
 that are used for plotting properly handle weighted events.
 
-v0.9.3 (31-Oct-2017):
+## v0.9.3 (31-Oct-2017)
 
 New release to include features in the AmpPlotter and supporting
 packages that allow users to display background on plots.
 
-v0.9.2 (25-Aug-2016):
+## v0.9.2 (25-Aug-2016)
 
 Fix bug in loading kinematic data for GPU accelerated fits.
 
@@ -101,11 +97,11 @@ Insert optimization to be sure parameter has changed before recalculating
 amplitudes with free parameters.  This may accelerate some fits with
 floating parameters in amplitudes.
 
-v0.9.1 (11-Aug-2015):
+## v0.9.1 (11-Aug-2015)
 
 Fix problem with AmpPlotter Makefile.  No other functional changes.
 
-v0.9.0 (10-Aug-2015):
+## v0.9.0 (10-Aug-2015)
 
 Add new method of accounting for background in samples.  A background
 sample is specified in the configuration file using the "bkgnd" keyword.
@@ -113,7 +109,7 @@ This sample should be normalized such that the sum of the weights is
 equal to the estimated size of the background.  This contribution will
 be subtracted during the fit.
 
-v0.8.0 (17-Jun-2015):
+## v0.8.0 (17-Jun-2015)
 
 Removed dependence on CLHEP.  Lorentz vector classes are provided by ROOT
 anyway.  This makes installation and compilation slightly easier since it
@@ -125,7 +121,7 @@ are different.  Therefore, this update gets a new minor revision.
 Modifications made to remove numerous compiler warnings when build the
 UpRootMinuit library.
 
-v0.7.0 (8-May-2015):
+## v0.7.0 (8-May-2015)
 
 Added support for 2D histograms in the PlotGenerator.  This required a couple
 of changes to the interface that were not backwards compatible.  See the
@@ -143,12 +139,12 @@ Created a placeholder for moment-based fitting.  For now the class is empty
 but the former AmplitudeManager has been been reorganized to easily allow
 future implementation of a fits that utlize moments instead of amplitudes.
 
-v0.6.2 (18-Jul-2013):
+## v0.6.2 (18-Jul-2013)
 
 Fixed bug that caused an incorrect covariance matrix after rotateResults
 was called in the FitResults object.
 
-v0.6.1 (11-Jul-2013):
+## v0.6.1 (11-Jul-2013)
 
 An operator+= was defined for NormIntInterface that allows one to add
 statistically independent normalization integrals together to enhance the
@@ -161,7 +157,7 @@ when fitting for complex amplitudes.  See documentation in FitResults.
 Numerous bugs were fixed that caused trouble when one or more of the production
 amplitudes in a fit were fixed.
 
-v0.6.0 (28-Jun-2013):
+## v0.6.0 (28-Jun-2013)
 
 A bug was fixed that resulted in improper consideration of correlations
 of errors between real and imaginary parts of the production amplitude
@@ -190,12 +186,12 @@ Numerous other small changes to either fix bugs or reduce the quantity
 of output/diagnostic text that is printed to the screen during
 normal operations. 
 
-v0.5.2 (31-Jan-2013):
+## v0.5.2 (31-Jan-2013)
 
 Fixed bug that caused segfault when normalization integrals are read in
 from a file.
 
-v0.5.1 (31-Jan-2013):
+## v0.5.1 (31-Jan-2013)
 
 Fix bug in ParameterManager and ParamaterManagerMPI that caused MPI 
 versions of the code to segfault.
@@ -203,7 +199,7 @@ versions of the code to segfault.
 The AmpToolsInterface now uses the AmpVecs structure in the printAmplitudes
 routine.  This allows one to test GPU computations of amplitudes.
 
-v0.5 (16-Nov-2012):
+## v0.5 (16-Nov-2012)
 
 Bundled both Tutorials and AmpPlotter (GUI) with the package. See
 README files in those directories.
@@ -243,7 +239,7 @@ order to reduce the amount of code that user has to write.
 Fixed MinuitIterface and URMinuit to properly use the maximum number of iterations
 set by the user (default of 5000) for certain MINUIT commands (hesse, minos, migrad).
 
-v0.4 (11-July-2012):
+## v0.4 (11-July-2012)
 
 Fixed GPU manager to correctly report the number of cores on various new
 GPU hardware (with a fix from R.T. Jones).
@@ -254,7 +250,7 @@ on the intensity in the PlotGenerator.
 Fixed a bug in the PlotGenerator that didn't allow enabling and disabling
 of amplitudes.
 
-v0.3 (16-January-2011):
+## v0.3 (16-January-2011)
 
 Improved reduction kernel for doing double-precision sums on the GPU.  This
 was causing double precision computation to fail on newer Tesla GPUs.  No trouble
@@ -267,13 +263,13 @@ the initial values of the parameters have been set.  Doing these computations
 in the constructor for amplitudes with free parameters is not recommended since
 the free parameters will be set to some default value of 1E9.
 
-v0.2 (4-January-2011):
+## v0.2 (4-January-2011)
 
 Fixed bad memory handling bug that would cause corrupt amplitude calculation
 for a fit that had an amplitude with free parameters.  Users should be 
 skeptical of fits done with free amplitude parameters with version 0.1.
 
-v0.1 (2-January-2011):
+## v0.1 (2-January-2011)
 
 First publicly available experimental version.  The package has been in
 private testing for a long period of time.  Some aspects of the MPI implementation
